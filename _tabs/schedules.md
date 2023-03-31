@@ -1,5 +1,5 @@
 ---
-# the default layout is 'page'
+layout: schedules
 icon: fas fa-calendar
 order: 5
 ---
