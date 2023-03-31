@@ -5,9 +5,9 @@ layout: page
 
 <div id="archives" class="pl-xl-3">
 
-{% assign today = site.schedule | where_exp: "event", "event.date == 'now'" | sort: 'date' %}
-{% assign soon = site.schedule | where_exp: "event", "event.date > 'now'" | sort: 'date' %}
-{% assign past = site.schedule | where_exp: "event", "event.date < 'now'" | sort: 'date' | reverse %}
+{% assign today = site.schedule | where_exp: "event", "event.date == now" | sort: 'date' %}
+{% assign soon = site.schedule | where_exp: "event", "event.date > now" | sort: 'date' %}
+{% assign past = site.schedule | where_exp: "event", "event.date < now" | sort: 'date' | reverse %}
 
 {% if today.size > 0 %}
   <h2>Сегодня</h2>
