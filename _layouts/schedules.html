@@ -5,10 +5,13 @@ layout: page
 
 <div id="archives" class="pl-xl-3">
 
-{% assign today = site.schedule | where_exp: "event", "event.date == now" | sort: 'date' %}
-{% assign soon = site.schedule | where_exp: "event", "event.date > now" | sort: 'date' %}
-{% assign past = site.schedule | where_exp: "event", "event.date < now" | sort: 'date' | reverse %}
-{{now}}
+{% capture currentDate %}{{ "now"}}{% endcapture %}
+<span>{{ currentDate }}</span>
+
+{% assign today = site.schedule | where_exp: "event", "event.date == currentDate" | sort: 'date' %}
+{% assign soon = site.schedule | where_exp: "event", "event.date > currentDate" | sort: 'date' %}
+{% assign past = site.schedule | where_exp: "event", "event.date < currentDate" | sort: 'date' | reverse %}
+
 {% if today.size > 0 %}
   <h2>Сегодня</h2>
   {% for event in today %}
