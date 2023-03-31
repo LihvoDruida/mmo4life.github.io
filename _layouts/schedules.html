@@ -2,6 +2,7 @@
 layout: page
 # The Archives of posts.
 ---
+
 <div id="archives" class="pl-xl-3">
 <div class="devices">
 
@@ -17,10 +18,6 @@ layout: page
       <p>{{ event.date | date: "%d.%m.%Y" }}</p>
       <p>{{ event.description }}</p>
     </div>
-
-    {% if forloop.index0 | modulo: 3 == 2 or forloop.last %}
-      <div style="clear: both;"></div>
-    {% endif %}
   {% endfor %}
 {% endif %}
 
@@ -32,10 +29,6 @@ layout: page
       <p>{{ event.date | date: "%d.%m.%Y" }}</p>
       <p>{{ event.description }}</p>
     </div>
-
-    {% if forloop.index0 | modulo: 3 == 2 or forloop.last %}
-      <div style="clear: both;"></div>
-    {% endif %}
   {% endfor %}
 {% endif %}
 
@@ -48,9 +41,6 @@ layout: page
       <p>{{ event.description }}</p>
     </div>
 
-    {% if forloop.index0 | modulo: 3 == 2 or forloop.last %}
-      <div style="clear: both;"></div>
-    {% endif %}
   {% endfor %}
 {% endif %}
 
