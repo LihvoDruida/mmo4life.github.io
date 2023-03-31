@@ -1,0 +1,19 @@
+---
+layout: page
+# The Archives of posts.
+---
+
+{% assign df_strftime_m = site.data.locales[site.lang].df.archives.strftime | default: '/ %m' %}
+{% assign df_dayjs_m = site.data.locales[site.lang].df.archives.dayjs | default: '/ MM' %}
+
+<div id="archives" class="pl-xl-3">
+
+{% assign events = site.schedule | sort: 'date' %}
+
+{% for event in events %}
+  <h2>{{ event.title }}</h2>
+  <p>{{ event.date | date: "%d.%m.%Y" }}</p>
+  <p>{{ event.description }}</p>
+{% endfor %}
+
+</div>
