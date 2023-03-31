@@ -4,7 +4,6 @@ layout: page
 ---
 
 <div id="archives" class="pl-xl-3">
-<div class="devices">
 
 {% assign today = site.schedule | where_exp: "event", "event.date == 'now'" | sort: 'date' %}
 {% assign soon = site.schedule | where_exp: "event", "event.date > 'now'" | sort: 'date' %}
@@ -44,5 +43,4 @@ layout: page
   {% endfor %}
 {% endif %}
 
-</div>
 </div>
