@@ -1,6 +1,6 @@
 ---
 # the default layout is 'page'
-icon: fas fa-money
+icon: fas fa-credit-card
 order: 4
 ---
 
