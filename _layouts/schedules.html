@@ -2,18 +2,57 @@
 layout: page
 # The Archives of posts.
 ---
-
-{% assign df_strftime_m = site.data.locales[site.lang].df.archives.strftime | default: '/ %m' %}
-{% assign df_dayjs_m = site.data.locales[site.lang].df.archives.dayjs | default: '/ MM' %}
-
 <div id="archives" class="pl-xl-3">
+<div class="devices">
 
-{% assign events = site.schedule | sort: 'date' %}
+{% assign today = site.schedule | where_exp: "event", "event.date == 'now'" | sort: 'date' %}
+{% assign soon = site.schedule | where_exp: "event", "event.date > 'now'" | sort: 'date' %}
+{% assign past = site.schedule | where_exp: "event", "event.date < 'now'" | sort: 'date' | reverse %}
 
-{% for event in events %}
-  <h2>{{ event.title }}</h2>
-  <p>{{ event.date | date: "%d.%m.%Y" }}</p>
-  <p>{{ event.description }}</p>
-{% endfor %}
+{% if today.size > 0 %}
+  <h2>Сегодня</h2>
+  {% for event in today %}
+    <div>
+      <h2>{{ event.title }}</h2>
+      <p>{{ event.date | date: "%d.%m.%Y" }}</p>
+      <p>{{ event.description }}</p>
+    </div>
 
+    {% if forloop.index0 | modulo: 3 == 2 or forloop.last %}
+      <div style="clear: both;"></div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if soon.size > 0 %}
+  <h2>Скоро</h2>
+  {% for event in soon %}
+    <div>
+      <h2>{{ event.title }}</h2>
+      <p>{{ event.date | date: "%d.%m.%Y" }}</p>
+      <p>{{ event.description }}</p>
+    </div>
+
+    {% if forloop.index0 | modulo: 3 == 2 or forloop.last %}
+      <div style="clear: both;"></div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if past.size > 0 %}
+  <h2>Завершенные</h2>
+  {% for event in past %}
+    <div>
+      <h2>{{ event.title }}</h2>
+      <p>{{ event.date | date: "%d.%m.%Y" }}</p>
+      <p>{{ event.description }}</p>
+    </div>
+
+    {% if forloop.index0 | modulo: 3 == 2 or forloop.last %}
+      <div style="clear: both;"></div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+</div>
 </div>
