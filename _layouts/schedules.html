@@ -5,9 +5,8 @@ layout: page
 
 <div id="archives" class="pl-xl-3">
 
-{% assign now = site.time | date: "%Y-%m-%d" %}
 {% assign today = site.schedule | where_exp: "event", "event.date == now" | sort: 'date' %}
-{% assign soon = site.schedule | where_exp: "event", "event.date  > now" | sort: 'date' %}
+{% assign soon = site.schedule | where_exp: "event", "event.date > now" | sort: 'date' %}
 {% assign past = site.schedule | where_exp: "event", "event.date < now" | sort: 'date' | reverse %}
 
 {% if today.size > 0 %}
@@ -18,7 +17,6 @@ layout: page
       <p>{{ event.date | date: "%d.%m.%Y" }}</p>
       <p>{{ event.description }}</p>
     </div>
-
   {% endfor %}
 {% endif %}
 
@@ -30,7 +28,6 @@ layout: page
       <p>{{ event.date | date: "%d.%m.%Y" }}</p>
       <p>{{ event.description }}</p>
     </div>
-
   {% endfor %}
 {% endif %}
 
@@ -42,7 +39,6 @@ layout: page
       <p>{{ event.date | date: "%d.%m.%Y" }}</p>
       <p>{{ event.description }}</p>
     </div>
-	
   {% endfor %}
 {% endif %}
 
