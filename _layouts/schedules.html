@@ -3,17 +3,18 @@ layout: page
 # The Archives of posts.
 ---
 
-<div id="archives" class="pl-xl-3">
+<div id='archives' class='pl-xl-3'>
 
-{% assign currentDate = site.time | date: "%Y-%m-%d" | to_time %}
+{% assign currentDate = site.time | date: '%Y-%m-%d' | date: '%s' | plus: 0 | date: '%Y-%m-%d' | to_date %}
+
 <span>{{ currentDate }}</span>
 <h2>Upcoming Events</h2>
-{% assign upcoming = site.schedule | where_exp: "event", "event.date >= currentDate" | sort: 'date' %}
+{% assign upcoming = site.schedule | where_exp: 'event', 'event.date >= currentDate' | sort: 'date' %}
 {% if upcoming.size > 0 %}
   {% for event in upcoming %}
     <div>
       <h3>{{ event.title }}</h3>
-      <p>Date: {{ event.date | date: "%B %d, %Y" }}</p>
+      <p>Date: {{ event.date | date: '%B %d, %Y' }}</p>
       <p>{{ event.description }}</p>
     </div>
   {% endfor %}
@@ -24,12 +25,12 @@ layout: page
 <hr>
 
 <h2>Today's Events</h2>
-{% assign today = site.schedule | where_exp: "event", "event.date == currentDate" | sort: 'date' %}
+{% assign today = site.schedule | where_exp: 'event', 'event.date == currentDate' | sort: 'date' %}
 {% if today.size > 0 %}
   {% for event in today %}
     <div>
       <h3>{{ event.title }}</h3>
-      <p>Date: {{ event.date | date: "%B %d, %Y" }}</p>
+      <p>Date: {{ event.date | date: '%B %d, %Y' }}</p>
       <p>{{ event.description }}</p>
     </div>
   {% endfor %}
@@ -40,12 +41,12 @@ layout: page
 <hr>
 
 <h2>Past Events</h2>
-{% assign past = site.schedule | where_exp: "event", "event.date < currentDate" | sort: 'date' | reverse %}
+{% assign past = site.schedule | where_exp: 'event', 'event.date < currentDate' | sort: 'date' | reverse %}
 {% if past.size > 0 %}
   {% for event in past %}
     <div>
       <h3>{{ event.title }}</h3>
-      <p>Date: {{ event.date | date: "%B %d, %Y" }}</p>
+      <p>Date: {{ event.date | date: '%B %d, %Y' }}</p>
       <p>{{ event.description }}</p>
     </div>
   {% endfor %}
