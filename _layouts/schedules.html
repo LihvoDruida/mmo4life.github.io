@@ -5,7 +5,7 @@ layout: page
 
 <div id="archives" class="pl-xl-3">
 
-{% capture currentDate %}{{ site.time | date: "%Y-%m-%d %H:%M:%S %z" | replace: " ", "T" }}{% endcapture %}
+{% assign currentDate = site.time | date: "%Y-%m-%d %H:%M:%S %z" | replace: " ", "T" %}
 
 <span>{{ currentDate }}</span>
 
