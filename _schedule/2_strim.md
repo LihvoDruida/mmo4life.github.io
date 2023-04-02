@@ -1,5 +1,5 @@
 ---
 title: Старенький добрий Archeage
-date: 2023-04-08 12:05:49 +0300
+date: 2023-04-08
 description: Test
 ---
