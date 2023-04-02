@@ -8,7 +8,7 @@ layout: page
 {% assign currentDate = site.time | date: "%Y-%m-%d" %}
 
 <h2>Upcoming Events</h2>
-{% assign upcoming = site.events | where_exp: "event", "event.date >= currentDate" | sort: 'date' %}
+{% assign upcoming = site.schedule | where_exp: "event", "event.date >= currentDate" | sort: 'date' %}
 {% if upcoming.size > 0 %}
   {% for event in upcoming %}
     <div>
@@ -24,7 +24,7 @@ layout: page
 <hr>
 
 <h2>Today's Events</h2>
-{% assign today = site.events | where_exp: "event", "event.date == currentDate" | sort: 'date' %}
+{% assign today = site.schedule | where_exp: "event", "event.date == currentDate" | sort: 'date' %}
 {% if today.size > 0 %}
   {% for event in today %}
     <div>
@@ -40,7 +40,7 @@ layout: page
 <hr>
 
 <h2>Past Events</h2>
-{% assign past = site.events | where_exp: "event", "event.date < currentDate" | sort: 'date' | reverse %}
+{% assign past = site.schedule | where_exp: "event", "event.date < currentDate" | sort: 'date' | reverse %}
 {% if past.size > 0 %}
   {% for event in past %}
     <div>
