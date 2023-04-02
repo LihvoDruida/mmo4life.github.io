@@ -3,47 +3,59 @@ layout: page
 # The Archives of posts.
 ---
 
+---
+layout: page
+title: Events
+---
+
 <div id="archives" class="pl-xl-3">
 
-{% assign currentDate = site.time | date: "%Y-%m-%d %H:%M:%S %z" | replace: " ", "T" %}
+{% assign currentDate = site.time | date: "%Y-%m-%d" %}
 
-<span>{{ currentDate }}</span>
+<h2>Upcoming Events</h2>
+{% assign upcoming = site.events | where_exp: "event", "event.date >= currentDate" | sort: 'date' %}
+{% if upcoming.size > 0 %}
+  {% for event in upcoming %}
+    <div>
+      <h3>{{ event.title }}</h3>
+      <p>Date: {{ event.date | date: "%B %d, %Y" }}</p>
+      <p>{{ event.description }}</p>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>No upcoming events at this time.</p>
+{% endif %}
 
-{% assign today = site.schedule | where_exp: "event", "event.date == currentDate" | sort: 'date' %}
-{% assign soon = site.schedule | where_exp: "event", "event.date > currentDate" | sort: 'date' %}
-{% assign past = site.schedule | where_exp: "event", "event.date < currentDate" | sort: 'date' | reverse %}
+<hr>
 
+<h2>Today's Events</h2>
+{% assign today = site.events | where_exp: "event", "event.date == currentDate" | sort: 'date' %}
 {% if today.size > 0 %}
-  <h2>Сегодня</h2>
   {% for event in today %}
     <div>
-      <h2>{{ event.title }}</h2>
-      <p>{{ event.date | date: "%d.%m.%Y" }}</p>
+      <h3>{{ event.title }}</h3>
+      <p>Date: {{ event.date | date: "%B %d, %Y" }}</p>
       <p>{{ event.description }}</p>
     </div>
   {% endfor %}
+{% else %}
+  <p>No events scheduled for today.</p>
 {% endif %}
 
-{% if soon.size > 0 %}
-  <h2>Скоро</h2>
-  {% for event in soon %}
-    <div>
-      <h2>{{ event.title }}</h2>
-      <p>{{ event.date | date: "%d.%m.%Y" }}</p>
-      <p>{{ event.description }}</p>
-    </div>
-  {% endfor %}
-{% endif %}
+<hr>
 
+<h2>Past Events</h2>
+{% assign past = site.events | where_exp: "event", "event.date < currentDate" | sort: 'date' | reverse %}
 {% if past.size > 0 %}
-  <h2>Завершенные</h2>
   {% for event in past %}
     <div>
-      <h2>{{ event.title }}</h2>
-      <p>{{ event.date | date: "%d.%m.%Y" }}</p>
+      <h3>{{ event.title }}</h3>
+      <p>Date: {{ event.date | date: "%B %d, %Y" }}</p>
       <p>{{ event.description }}</p>
     </div>
   {% endfor %}
+{% else %}
+  <p>No past events to display.</p>
 {% endif %}
 
 </div>
