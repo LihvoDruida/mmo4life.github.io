@@ -5,9 +5,9 @@ layout: page
 
 <div id="archives" class="pl-xl-3">
 
-{% assign currentDate = site.time %}
-
-<span> {{currentDate}}
+{% assign currentDate = site.time | to_time%}
+{% assign curDate = currentDate | date: "%Y-%m-%d" %}
+<span> {{curDate}}
 <h2>Upcoming Events</h2>
 {% assign upcoming = site.schedule | where_exp: "event", "event.date >= currentDate" | sort: 'date' %}
 {% if upcoming.size > 0 %}
