@@ -5,7 +5,7 @@ layout: page
 
 <div id='archives' class='pl-xl-3'>
 
-{% assign currentDate = 'now' %}
+{% assign currentDate = 'now' | date: '%Y-%m-%d' %}
 
 <span>{{ currentDate }}</span>
 <h2>Upcoming Events</h2>
