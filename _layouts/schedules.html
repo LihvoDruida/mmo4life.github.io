@@ -44,10 +44,11 @@ layout: page
 {% assign past = site.schedule | where_exp: 'event', 'event.date < currentDate' | sort: 'date' | reverse %}
 {% if past.size > 0 %}
   {% for event in past %}
+    <div class="d-flex flex-wrap ml-xl-2 mr-xl-2">
+	<div>
+      {{ event.title }}<span class="text-muted">{{ event.date | date: '%B %d, %Y' }}</span>
     </div>
-	    <div>
-        {{ event.title }}<span class="text-muted">{{ event.date | date: '%B %d, %Y' }}</span>
-    </div>
+	</div>
   {% endfor %}
 {% else %}
   <p>No past events to display.</p>
