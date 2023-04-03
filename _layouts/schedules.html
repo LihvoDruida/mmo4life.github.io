@@ -5,7 +5,7 @@ layout: page
 
 <div id='archives' class='pl-xl-3'>
 
-{% assign currentDate = site.time %}
+{% assign currentDate = site.time  %}
 
 <span>{{ currentDate }}</span>
 <h2>Upcoming Events</h2>
@@ -44,10 +44,9 @@ layout: page
 {% assign past = site.schedule | where_exp: 'event', 'event.date < currentDate' | sort: 'date' | reverse %}
 {% if past.size > 0 %}
   {% for event in past %}
-    <div>
-      <h3>{{ event.title }}</h3>
-      <p>Date: {{ event.date | date: '%B %d, %Y' }}</p>
-      <p>{{ event.description }}</p>
+    </div>
+	    <div>
+        {{ event.title }}<span class="text-muted">{{ event.date | date: '%B %d, %Y' }}</span>
     </div>
   {% endfor %}
 {% else %}
