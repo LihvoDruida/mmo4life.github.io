@@ -45,7 +45,7 @@ layout: page
 {% if past.size > 0 %}
   {% for event in past %}
     <div class="d-flex flex-wrap ml-xl-2 mr-xl-2">
-	<div>
+	<div class="tag">
       {{ event.title }}<span class="text-muted">{{ event.date | date: '%B %d, %Y' }}</span>
     </div>
 	</div>
