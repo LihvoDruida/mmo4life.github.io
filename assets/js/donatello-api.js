@@ -1,5 +1,5 @@
 const url = 'https://donatello.to/api/v1/clients';
-const token = '5d2ef4301d0507022f45f8229fd54dd2';
+const token = 'fd4d0163ace81cf144e74f300ea83b3d';
 
 fetch(url, {
   headers: {
