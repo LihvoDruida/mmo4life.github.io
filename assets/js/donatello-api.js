@@ -1,12 +1,13 @@
-const url = 'https://cors-anywhere.herokuapp.com/https://donatello.to/api/v1/clients';
-
+const url = 'https://donatello.to/api/v1/clients';
 const token = 'fd4d0163ace81cf144e74f300ea83b3d';
 
 fetch(url, {
   method: 'GET',
   headers: {
-    'X-Token': token
-  }
+    'X-Token': token,
+    'Origin': 'https://www.mmo4life.pp.ua' // Добавляем Origin заголовок
+  },
+  mode: 'cors' // Устанавливаем режим работы fetch в cors
 })
   .then(response => {
     if (!response.ok) {
