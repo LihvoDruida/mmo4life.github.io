@@ -1,4 +1,5 @@
-const url = 'https://donatello.to/api/v1/clients';
+const url = 'https://cors-anywhere.herokuapp.com/https://donatello.to/api/v1/clients';
+
 const token = 'fd4d0163ace81cf144e74f300ea83b3d';
 
 fetch(url, {
