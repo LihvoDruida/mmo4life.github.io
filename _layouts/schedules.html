@@ -40,9 +40,13 @@ layout: page
 
 <hr>
 
-<h2>Past Events</h2>
+<div id="page-tag">
+  <h1 class="pl-lg-2">
+ <span class="lead text-muted pl-2">Past Events</span>
+ </h1>
 {% assign past = site.schedule | where_exp: 'event', 'event.date < currentDate' | sort: 'date' | reverse %}
 {% if past.size > 0 %}
+
   <ul class="post-content pl-0">
   {% for event in past %}
     <li class="d-flex justify-content-between pl-md-3 pr-md-3">
@@ -55,6 +59,7 @@ layout: page
 {% else %}
   <p>No past events to display.</p>
 {% endif %}
+</div>
 
 </div>
 
